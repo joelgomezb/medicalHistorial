@@ -3,7 +3,7 @@
 @section('content')
 @include('layouts.bar')
     <div class="col-md-9">
-	{{ Form::open(['url' => '/patient/store']) }}
+	{{ Form::open(['route' => 'store']) }}
             <div class="panel panel-default">
                 <div class="panel-heading">Patient Information</div>
 
