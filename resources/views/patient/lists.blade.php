@@ -61,6 +61,7 @@
 										<th>Name</th>
 										<th>Surname</th>
 										<th>Created</th>
+										<th>Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -72,7 +73,15 @@
 											<td>{{ $patient->name }}</td>
 											<td>{{ $patient->surname }}</td>
 											<td>{{ $patient->created_at }}</td>
-											<td><a href="#" onClick="javacript:openModal({{ $loop->index }})" style="cursor: pointer;"><li class="fa fa-edit"></li></a></td>
+											<td>@if ($patient->signature)
+													<span class="label label-success">Signed</span></td>
+												@else
+													<span class="label label-warning">Pending</span></td>
+												@endif
+											<td>
+					<a href="#" onClick="javacript:openModal({{ $loop->index }})" style="cursor: pointer;margin-right:5px;"><li class="fa fa-edit"></li></a>
+					<a href='{{ url("/patient/pdf/" . $loop->index ) }}' style="cursor: pointer;margin-right:5px;"><li class="fa fa-download"></li></a>
+					<a href="#" onClick="javacript:deleteHistorial({{ $loop->index }})" style="cursor: pointer;"><li class="fa fa-trash"></li></a></td>
 											<td></td>
 										</tr>
 									@endforeach
@@ -104,7 +113,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Patient: <span id="modal_name_patient"></span></h4>
+        <h4 class="modal-title">Patient: <span id="modal_name_patient_delete"></span></h4>
       </div>
       <div class="modal-body">
 			<table class="table table-striped">
@@ -121,19 +130,50 @@
 
   </div>
 </div>
+
+<!-- Modal Delete-->
+<div id="myModalDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Patient: <span id="modal_name_patient"></span></h4>
+      </div>
+      <div class="modal-body">
+			<span>Are you sure?</span>
+      </div>
+	  <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
 
 </script>
 @endsection
 
 @section ('local_js')
-	<script>
+<script>
 	function openModal(index){
 		var patient = {!! json_encode($patients) !!}
 
-		$("#modal_social_security").html("<b>" + patient.data[0].social_security + "<b>");
+		$("#modal_social_security").html("<b>" + patient.data[index].social_security + "<b>");
 		$('#myModal').modal('show');
-		console.log(patient);
 	}
-	</script>
+
+	function deleteHistorial(index){
+				
+		var patient = {!! json_encode($patients) !!}
+
+		$("#modal_name_patient_delete").html("<b>" + patient.data[index].social_security + "<b>");
+		$('#myModalDelete').modal('show');
+	}
+
+</script>
 @endsection

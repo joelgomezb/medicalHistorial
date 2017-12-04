@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use Auth;
 use Toastr;
+use App\User;
 use App\Patient;
+use Carbon\Carbon;
 use App\Insurance;
 use App\EmergencyContact;
 use Illuminate\Http\Request;
@@ -17,8 +21,7 @@ class PatientController extends Controller
 
 	public function lists(){
 		
-		$patients = Patient::whereNull('signature')
-					->orderBy('created_at', 'DESC')
+		$patients = Patient::orderBy('created_at', 'DESC')
 					->with('insurance')
 					->with('emergency_contact')
 					->paginate(10);
@@ -85,8 +88,30 @@ class PatientController extends Controller
 		$patients->insurance_id = $insurance->id;
 
 		$patients->save();
+
+		$result = Patient::where('id', $patients->id)->get();
+
+		if (!is_null(request('saveAndDownloadBtn'))){
+			$pdf = PDF::loadView('patient.pdf.patient', compact('result'));
+			$filename = $request->social_security ."_". Carbon::now('America/Boise')->subDay()->toDateString() . "pdf";
+			return $pdf->download($filename);
+		}
+
 		Toastr::success('Information of patient was saved!', 'Success', ["positionClass" => "toast-top-right", "closeButton" => "true"]);
 		return redirect()->to('/patient')->with(['success' => true]);
-		#return view('patient.patient');
+	}
+
+	public function pdf(Request $request){
+
+		/*$user = User::with('role')->first();
+		dd(Auth::user()->role->name);
+		return "joelgomezb"; */
+
+		$result= Patient::where('id', request('id'))->get();
+
+		$pdf = PDF::loadView('patient.pdf.patient', compact('result'));
+		$filename = $result[0]->social_security ."_". Carbon::now('America/Boise')->subDay()->toDateString() . "pdf";
+		return $pdf->download($filename);
+		return redirect()->to('/list')->withInput();
 	}
 }

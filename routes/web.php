@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/patient', 'PatientController@index')->name('patient');
-Route::get('/lists', 'PatientController@lists')->name('lists');
-Route::post('/patient/search', 'PatientController@search')->name('search');
-Route::post('/patient/store', 'PatientController@store')->name('store');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/patient', 'PatientController@index')->name('patient')->middleware('auth');
+Route::get('/lists', 'PatientController@lists')->name('lists')->middleware('auth');
+Route::post('/patient/search', 'PatientController@search')->name('search')->middleware('auth');
+Route::post('/patient/store', 'PatientController@store')->name('store')->middleware('auth');
+
+Route::get('/patient/pdf/{id}', 'PatientController@pdf')->name('pdf')->middleware('auth');

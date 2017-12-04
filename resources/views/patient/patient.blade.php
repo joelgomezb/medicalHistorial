@@ -338,8 +338,8 @@
                 </div>
 				<div class="panel-footer">
 					<label class="required">Mandatory</label><br>
-					{{ Form::submit('Save', ['id' => 'saveBtn','class' => 'btn btn-primary', 'disabled' => 'true']) }}
-					{{ Form::submit('Save and Download', ['id' => 'saveAndDownloadBtn','class' => 'btn btn-primary', 'disabled' => 'true']) }}
+					{{ Form::submit('Save', ['id' => 'saveBtn','name' => 'saveBtn', 'class' => 'btn btn-primary', 'disabled' => 'true', 'value' => 'Save']) }}
+					{{ Form::submit('Save and Download', ['id' => 'saveAndDownloadBtn', 'name' => 'saveAndDownloadBtn', 'class' => 'btn btn-primary', 'disabled' => 'true']) }}
 				</div>
             </div>
 	</div>
