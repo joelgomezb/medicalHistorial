@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Toastr;
 use App\Patient;
 use App\Insurance;
 use App\EmergencyContact;
@@ -84,6 +85,8 @@ class PatientController extends Controller
 		$patients->insurance_id = $insurance->id;
 
 		$patients->save();
+		Toastr::success('Information of patient was saved!', 'Success', ["positionClass" => "toast-top-right", "closeButton" => "true"]);
 		return redirect()->to('/patient')->with(['success' => true]);
+		#return view('patient.patient');
 	}
 }

@@ -125,3 +125,15 @@
 
 </script>
 @endsection
+
+@section ('local_js')
+	<script>
+	function openModal(index){
+		var patient = {!! json_encode($patients) !!}
+
+		$("#modal_social_security").html("<b>" + patient.data[0].social_security + "<b>");
+		$('#myModal').modal('show');
+		console.log(patient);
+	}
+	</script>
+@endsection

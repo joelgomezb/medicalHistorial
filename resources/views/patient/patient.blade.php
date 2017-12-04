@@ -11,7 +11,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-2">
-								{{ Form::label('social_security', 'Social Security No') }}
+								{{ Form::label('social_security', 'Social Security No', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-4">
@@ -24,7 +24,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-1">
-								{{ Form::label('name_', 'Name') }}
+								{{ Form::label('name_', 'Name', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-4">
@@ -32,7 +32,7 @@
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('surname', 'Surname') }}
+								{{ Form::label('surname', 'Surname', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-4">
@@ -46,7 +46,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-1">
-								{{ Form::label('address', 'Address') }}
+								{{ Form::label('address', 'Address', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-6">
@@ -58,7 +58,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-1">
-								{{ Form::label('city', 'City') }}
+								{{ Form::label('city', 'City', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
@@ -66,7 +66,7 @@
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('state', 'State') }}
+								{{ Form::label('state', 'State', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
@@ -74,7 +74,7 @@
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('zip', 'Zip') }}
+								{{ Form::label('zip', 'Zip', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-2">
@@ -86,7 +86,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-1">
-								{{ Form::label('cellphone', 'Tel. No. (Cell)') }}
+								{{ Form::label('cellphone', 'Tel. No. (Cell)', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-4">
@@ -94,7 +94,7 @@
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('homephone', 'Home Phone') }}
+								{{ Form::label('homephone', 'Home Phone', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-4">
@@ -106,7 +106,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-1">
-								{{ Form::label('email', 'Email Address') }}
+								{{ Form::label('email', 'Email Address', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-4">
@@ -118,7 +118,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-1">
-								{{ Form::label('dateofbirth', 'Date of Birth') }}
+								{{ Form::label('dateofbirth', 'Date of Birth', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
@@ -126,15 +126,15 @@
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('age', 'Age') }}
+								{{ Form::label('age', 'Age', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::text('age', null, ['class' => 'form-control']) }}
+								{{ Form::text('age', null, ['class' => 'form-control', 'required']) }}
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('sex', 'Sex') }}
+								{{ Form::label('sex', 'Sex', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-2">
@@ -147,7 +147,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-5">
-								{{ Form::label('maritalstatus', 'Single') }}
+								{{ Form::label('maritalstatus', 'Single', ['class' => 'required']) }}
 								{{ Form::radio('maritalstatus', 'single') }}
 								
 								{{ Form::label('maritalstatus', 'Married') }}
@@ -161,7 +161,7 @@
 							</div>
 
 							<div class="col-md-1">
-								{{ Form::label('numchildren', 'No Children') }}
+								{{ Form::label('numchildren', 'No Children', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-2">
@@ -298,7 +298,7 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-2">
-								{{ Form::label('name_contact', 'Name') }}
+								{{ Form::label('name_contact', 'Name', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
@@ -306,8 +306,8 @@
 							</div>
 
 
-							<div class="col-md-1">
-								{{ Form::label('surname_contact', 'Surname') }}
+							<div class="col-md-2">
+								{{ Form::label('surname_contact', 'Surname', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
@@ -319,16 +319,15 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-2">
-								{{ Form::label('relationship', 'Relationship') }}
+								{{ Form::label('relationship', 'Relationship', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
 								{{ Form::text('relationship', null, ['class' => 'form-control', 'required']) }}
 							</div>
 
-
-							<div class="col-md-1">
-								{{ Form::label('phone_contact', 'Tel. No') }}
+							<div class="col-md-2">
+								{{ Form::label('phone_contact', 'Tel. No', ['class' => 'required']) }}
 							</div>
 
 							<div class="col-md-3">
@@ -338,6 +337,7 @@
 					</div>
                 </div>
 				<div class="panel-footer">
+					<label class="required">Mandatory</label><br>
 					{{ Form::submit('Save', ['id' => 'saveBtn','class' => 'btn btn-primary', 'disabled' => 'true']) }}
 					{{ Form::submit('Save and Download', ['id' => 'saveAndDownloadBtn','class' => 'btn btn-primary', 'disabled' => 'true']) }}
 				</div>
@@ -363,8 +363,8 @@
 			$("#signature").attr('value', dataUrl);
 			$('#saveBtn').attr('disabled', false);
 			$('#saveAndDownloadBtn').attr('disabled', false);
+			$("#name_contact").focus();
 		});
 
-		toastr.info('Are you the 6 fingered man?')
 	</script>
 @endsection

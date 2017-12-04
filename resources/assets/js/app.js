@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 require('jq-signature');
+var toastr = require('toastr');
 
 //window.Vue = require('vue');
 
