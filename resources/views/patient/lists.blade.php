@@ -80,7 +80,7 @@
 												@endif
 											<td>
 					<a href="#" onClick="javacript:openModal({{ $loop->index }})" style="cursor: pointer;margin-right:5px;"><li class="fa fa-edit"></li></a>
-					<a href='{{ url("/patient/pdf/" . $loop->index ) }}' style="cursor: pointer;margin-right:5px;"><li class="fa fa-download"></li></a>
+					<a href='{{ url("/patient/pdf/" . ($loop->index + 1) ) }}' style="cursor: pointer;margin-right:5px;"><li class="fa fa-download"></li></a>
 					<a href="#" onClick="javacript:deleteHistorial({{ $loop->index }})" style="cursor: pointer;"><li class="fa fa-trash"></li></a></td>
 											<td></td>
 										</tr>
